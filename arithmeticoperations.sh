@@ -10,3 +10,17 @@ s3=$(( c+a/b ))
 s4=$(( a%b+c ))
 dic=([0]=$s1 [1]=$s2 [2]=$s3 [3]=$s4)
 arr=(${dic[@]})
+for(( i=0;i<${#arr[@]};i++ ))
+do
+for(( j=i+1;j<${#arr[@]};j++ ))
+do
+if [ ${arr[i]} -lt ${arr[j]} ]
+then
+temp=${arr[i]}
+arr[i]=${arr[j]}
+arr[j]=$temp
+fi
+done
+done
+echo "descending order" ${arr[@]}
+
